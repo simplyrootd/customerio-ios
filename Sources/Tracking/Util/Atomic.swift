@@ -5,19 +5,25 @@ import Foundation
 
  Class is public because public fields may be Atomic.
  This class is only used for internal SDK development, only. It's not part of the official SDK.
-
- Inspired from: https://github.com/RougeWare/Swift-Atomic/blob/master/Sources/Atomic/Atomic.swift
  */
 @propertyWrapper
 public struct Atomic<DataType: Any> {
-    fileprivate let exclusiveAccessQueue = DispatchQueue(label: "Atomic \(UUID())", qos: .userInteractive)
+    fileprivate let lock = Lock.unsafeInit() // we want to have a new lock for every instance of Atomic.
 
     fileprivate var unsafeValue: DataType
 
     /// Safely accesses the unsafe value from within the context of its exclusive-access queue
     public var wrappedValue: DataType {
-        get { exclusiveAccessQueue.sync { unsafeValue } }
-        set { exclusiveAccessQueue.sync { unsafeValue = newValue } }
+        get {
+            lock.lock()
+            defer { lock.unlock() }
+            return unsafeValue
+        }
+        set {
+            lock.lock()
+            defer { lock.unlock() }
+            unsafeValue = newValue
+        }
     }
 
     /**
