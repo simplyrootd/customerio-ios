@@ -48,6 +48,9 @@ class TrackingAPITest: UnitTest {
         CustomerIO.shared.identify(identifier: "", body: encodableData)
         mock.identify(identifier: "", body: encodableData)
         instance.identify(identifier: "", body: encodableData)
+        CustomerIO.shared.identify(identifier: "", dict: dictionaryData)
+        mock.identify(identifier: "", dict: dictionaryData)
+        instance.identify(identifier: "", dict: dictionaryData)
 
         // clear identify
         CustomerIO.shared.clearIdentify()
@@ -64,6 +67,9 @@ class TrackingAPITest: UnitTest {
         CustomerIO.shared.track(name: "", data: encodableData)
         mock.track(name: "", data: encodableData)
         instance.track(name: "", data: encodableData)
+        CustomerIO.shared.track(name: "", dict: dictionaryData)
+        mock.track(name: "", dict: dictionaryData)
+        instance.track(name: "", dict: dictionaryData)
 
         // screen tracking
         CustomerIO.shared.screen(name: "")
@@ -75,6 +81,9 @@ class TrackingAPITest: UnitTest {
         CustomerIO.shared.screen(name: "", data: encodableData)
         mock.screen(name: "", data: encodableData)
         instance.screen(name: "", data: encodableData)
+        CustomerIO.shared.screen(name: "", dict: dictionaryData)
+        mock.screen(name: "", dict: dictionaryData)
+        instance.screen(name: "", dict: dictionaryData)
 
         // profile attributes
         CustomerIO.shared.profileAttributes = dictionaryData

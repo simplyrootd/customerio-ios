@@ -75,6 +75,28 @@ public extension CustomerIOInstance {
     ) {
         screen(name: name, data: EmptyRequestBody())
     }
+  
+    func identify(
+        identifier: String,
+        dict: [String: Any]
+    ) {
+        identify(identifier: identifier, body: dict)
+    }
+
+    func track (
+        name: String,
+        dict: [String: Any]
+    ) {
+        track(name: name, data: dict)
+    }
+  
+    func screen(
+        name: String,
+        dict: [String: Any]
+    ) {
+        screen(name: name, data: dict)
+    }
+  
 }
 
 /**
