@@ -56,7 +56,7 @@ public extension CustomerIOInstance {
     ) {
         screen(name: name, data: EmptyRequestBody())
     }
-  
+
     func identify(
         identifier: String,
         dict: [String: Any]
@@ -64,20 +64,19 @@ public extension CustomerIOInstance {
         identify(identifier: identifier, body: dict)
     }
 
-    func track (
+    func track(
         name: String,
         dict: [String: Any]
     ) {
         track(name: name, data: dict)
     }
-  
+
     func screen(
         name: String,
         dict: [String: Any]
     ) {
         screen(name: name, data: dict)
     }
-  
 }
 
 /**
